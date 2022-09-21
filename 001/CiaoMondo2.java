@@ -9,6 +9,11 @@ class CiaoMondo2 {
         for(int i=0; i<world.length(); i++) {
             System.out.print(world.charAt(i));
         }
+        System.out.print(hello.toUpperCase()); 
+        System.out.println("---"); 
+        for(int i=world.length(); i>0; i++) {
+            System.out.print(world.charAt(i));
+        }
         System.out.println("---"); 
     }
 }
