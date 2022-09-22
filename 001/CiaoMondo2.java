@@ -15,5 +15,7 @@ class CiaoMondo2 {
             System.out.print(world.charAt(i));
         }
         System.out.println("---"); 
+        System.out.println("---"); 
+        System.out.println("---"); 
     }
 }
