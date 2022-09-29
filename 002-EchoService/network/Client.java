@@ -12,12 +12,13 @@ import java.util.Scanner;
 
 public class Client {
 	public static void main(String[] args) throws Exception {
+		
+		String severAddress="127.0.0.1";  // localhost
+		int severPort=8698;
+		String clientMessage = "";
+		String serverMessage = "";
+		
 		try {
-			String severAddress="127.0.0.1";  // localhost
-			int severPort=8698;
-			String clientMessage = "";
-			String serverMessage = "";
-			
 			// Create connection to server socket
 			System.out.print("Client: Tentativo di connessione server=" + severAddress + ":" + severPort + " ... ");
 			Socket socket = new Socket(severAddress, severPort); //
