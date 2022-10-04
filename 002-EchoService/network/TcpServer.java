@@ -29,11 +29,14 @@ public class TcpServer {
 
 			// Scambio di dati tra client e server
 			while(!clientMsg.equals("quit")) {
+				//Lettura dato da stream di rete
 				clientMsg = inStream.readUTF();
 				System.out.println("Server: ricevuto messaggio " + clientMsg );
-				System.out.println("Server: invio messaggio "    + clientMsg );
+				
+				//Invio dati su stream di rete
 				outStream.writeUTF("Echo from server : "         + clientMsg);
 				outStream.flush();
+				System.out.println("Server: invio messaggio "    + clientMsg );
 			}
 
 			// Close resources
@@ -41,6 +44,7 @@ public class TcpServer {
 			clientSocket.close();
 			inStream.close();
 			outStream.close();
+
 		} catch (Exception e) {
 			System.out.println(e);
 		}
