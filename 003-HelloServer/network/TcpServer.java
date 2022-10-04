@@ -1,9 +1,10 @@
 /**
- * Lettura dati multi riga dal client
+ * Lettura dati multi riga provenienti dal client
  * 
  * from network/..
  * javac network/TcpServer.java
- * java network.TcpServer */
+ * java network.TcpServer 
+ */
 package network;
 
 import java.io.*;
@@ -39,8 +40,6 @@ public class TcpServer {
 				//Invio echo dati su stream di rete
 				//System.out.println("Server: invio messaggio "    + clientMsg );
                 outStream.println(clientMsg);    
-
-                if (clientMsg.equals("END")) break;  
 			}  
 
 			System.out.println("\n....................... Fine ricezione dati\n");
