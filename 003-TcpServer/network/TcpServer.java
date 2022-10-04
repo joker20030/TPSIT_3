@@ -1,6 +1,6 @@
 /**
  * Lettura dati multi riga dal client
- * modificare il codice affinche quando riceve due righe vuote di codice esca
+ * 
  * from network/..
  * javac network/TcpServer.java
  * java network.TcpServer */
