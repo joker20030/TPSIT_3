@@ -22,7 +22,7 @@ public class TcpServer {
 			System.out.println("Server: in ascolto sulla porta " + severPort);
 
 			// Attesa della connessione con il client
-			System.out.println("Attesa ricezione dati dal client ....................... \n\n");
+			System.out.println("Attesa ricezione dati dal client ....................... \n");
 			Socket clientSocket = serverSocket.accept();
 			
 			// Create output stream to write data
@@ -31,19 +31,19 @@ public class TcpServer {
 			BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
             // Ciclo di ricezione dal client e echo
-            while (true) {   
-				//Lettura dati dal client un righa alla volta    
-                clientMsg = inStream.readLine();		
-				System.out.println("Server: ricevuto messaggio " + clientMsg );	
+			//Lettura dati dal client un righa alla volta    
+            while ((clientMsg=inStream.readLine()) != null) {
+				//Riga di dati ricevuta dal client
+				System.out.println(clientMsg);	
 				
-				//Invio dati su stream di rete
-				System.out.println("Server: invio messaggio "    + clientMsg );
+				//Invio echo dati su stream di rete
+				//System.out.println("Server: invio messaggio "    + clientMsg );
                 outStream.println(clientMsg);    
 
                 if (clientMsg.equals("END")) break;  
 			}  
 
-			System.out.println("\n\n....................... Fine ricezione dati");
+			System.out.println("\n....................... Fine ricezione dati\n");
 
 			// Close resources
 			serverSocket.close();
