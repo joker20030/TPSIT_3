@@ -1,7 +1,8 @@
 /**
  * from network/..
  * javac network/TcpClient.java
- * java network.TcpClient */
+ * java network.TcpClient 
+ */
 package network;
 
 import java.io.DataInputStream;
@@ -30,9 +31,9 @@ public class TcpClient {
 			BufferedReader inUserStream = new BufferedReader(new InputStreamReader(System.in));
 			//Scanner scanner = new Scanner(System.in);
 			// Input stream per i dati provenienti dal socket 
-			DataInputStream inStream = new DataInputStream(socket.getInputStream());
+			DataInputStream inSocketStream = new DataInputStream(socket.getInputStream());
 			// Output stream 
-			DataOutputStream outStream = new DataOutputStream(socket.getOutputStream());
+			DataOutputStream outSocketStream = new DataOutputStream(socket.getOutputStream());
 			
 			while (!clientMsg.equals("quit")) {
 				// Prompt user to enter some text or 'quit'
@@ -40,21 +41,21 @@ public class TcpClient {
 				//clientMsg = scanner.nextLine();
 				clientMsg = inUserStream.readLine();
 
-				// Send the entered number to server
+				// Send the entered text to server
 				System.out.println("Client: invio il messaggio: " + clientMsg);
-				outStream.writeUTF(clientMsg);
-				outStream.flush();
+				outSocketStream.writeUTF(clientMsg);
+				outSocketStream.flush();
 
 				// Read data from socket input stream
-				serverMsg = inStream.readUTF();
+				serverMsg = inSocketStream.readUTF();
 				System.out.println("Client: ricevuto il messaggio: " + serverMsg);
 			}
 
 			// Close resources
-			outStream.close();
-			inStream.close();
-			socket.close();
+			outSocketStream.close();
+			inSocketStream.close();
 			inUserStream.close();
+			socket.close();
 			//scanner.close();			
 		} catch (Exception e) {
 			System.out.println(e);
