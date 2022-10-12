@@ -1,7 +1,6 @@
 /**
  * from network/..
- * javac network/TcpServer.java
- * java network.TcpServer 
+ * javac network/TcpServer.java; java network.TcpServer 
  */
 package network;
 
