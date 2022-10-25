@@ -9,20 +9,22 @@ import java.net.Socket;
 
 public class MultithreadedTcpServer {
 
-	static final int MAX_CONN = 99;
+	static final int MAX_CONN = 999;
+	static final int SRV_PORT = 8698;
+
 	public static void main(String[] args) throws Exception {
 	   
-		int severPort=8698;
 		int count = 0;                  // conta il numero di client
 			
-		// Listen to port
-		System.out.println("Server: in ascolto sula porta " + severPort );
-		ServerSocket server = new ServerSocket(8698);
+		// Creazione del socket
+		ServerSocket server = new ServerSocket(SRV_PORT);
 	
 		while(count<MAX_CONN) {
 			count++;
-			// Start accepting requests and wait until client connects
+			// Attendiamo le richieste di connessione dei client
+			System.out.println("Server: in ascolto sulla porta " + SRV_PORT );
 			Socket serverClientSocket = server.accept();  // bloccante
+
 			System.out.println("Serving Client " + count);
 			// Handle the client communication
 			TcpServer sa = new TcpServer(serverClientSocket, count);

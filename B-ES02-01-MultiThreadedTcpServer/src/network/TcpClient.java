@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class TcpClient {
 	public static void main(String[] args) throws Exception {
 		try {
+
 			String severAddress="127.0.0.1";  // localhost
 			int severPort=8698;
 			String clientMessage = "";
