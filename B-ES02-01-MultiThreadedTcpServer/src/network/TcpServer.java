@@ -19,23 +19,29 @@ class TcpServer extends Thread {
 			DataInputStream inStream = new DataInputStream(serverClientSocket.getInputStream());
 			DataOutputStream outStream = new DataOutputStream(serverClientSocket.getOutputStream());
 
-			String clientMessage = "";
-			String serverMessage = "";
+			String cMsg = "";
+			String sMsg = "";
 
-			while (!clientMessage.equals("end")) {
+			while (!cMsg.equals("end")) {
 
-				clientMessage = inStream.readUTF();
-				System.out.println("Server.Thread " + clientNo + " Ricevuto messaggio " + clientMessage );
-				serverMessage=clientMessage;
-				System.out.println("Server.Thread " + clientNo + " Invio messaggio " + serverMessage );
-				outStream.writeUTF(serverMessage);
+				//Leggiamo il messaggio proveniente dal client, e lo stampiamo a schermo
+				cMsg = inStream.readUTF();
+				System.out.println("Server.Thread " + clientNo + " Ricevuto messaggio " + cMsg );
+
+				//Echo
+				sMsg=cMsg;
+				System.out.println("Server.Thread " + clientNo + " Invio messaggio " + sMsg );
+				outStream.writeUTF(sMsg);
 				outStream.flush();
 			}
 			
-			serverMessage="Bye";
-			System.out.println("Server.Thread " + clientNo + " Invio messaggio " + clientMessage );
-			outStream.writeUTF(serverMessage);
+			//Prima di chiudere la connessione viene inviato un ultimo messaggio
+			sMsg="Bye";
+			System.out.println("Server.Thread " + clientNo + " Invio messaggio " + cMsg );
+			outStream.writeUTF(sMsg);
 			outStream.flush();
+
+			//Chiusura delle risorse utilizzate
 			inStream.close();
 			outStream.close();
 			serverClientSocket.close();
@@ -46,7 +52,4 @@ class TcpServer extends Thread {
 			System.out.println("Client -" + clientNo + " exit!! ");
 		}
 	}
-
-	
-
 }
