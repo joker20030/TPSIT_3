@@ -27,15 +27,17 @@ public class TcpServer {
 			Socket clientSocket = serverSocket.accept();
 			
 			// Create output stream to write data
-            PrintWriter outStream = new PrintWriter(clientSocket.getOutputStream(), true);   
-			//DataOutputStream outStream = new DataOutputStream(clientSocket.getOutputStream());	
+            //PrintWriter outStream = new PrintWriter(clientSocket.getOutputStream(), true);   
+			DataOutputStream outStream = new DataOutputStream(clientSocket.getOutputStream());	
 			// Create input stream to read data from socket
 			BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 			
             // Ciclo di ricezione dal client e echo
-			//Lettura dati dal client un righa alla volta    
-            while ((clientMsg=inStream.readLine()) != null) {
+			//Lettura dati dal client un righa alla volta   
+			int i=1; 
+            while ((clientMsg=inStream.readLine()) != null && clientMsg.length()!=0) {
 				//Riga di dati ricevuta dal client
+				//System.out.println(i++ + " " + clientMsg + "-" + clientMsg.length());	
 				System.out.println(clientMsg);	
 			}  
 
@@ -44,10 +46,10 @@ public class TcpServer {
 			clientMsg += "Connection: close\r\n";
 			clientMsg += "Content-Type: text/plain\r\n";
 			clientMsg += "\r\n";
-			clientMsg += "Saluti dal web server Java";
-			//outStream.writeUTF(clientMsg);
-			//outStream.flush();
-			outStream.print(clientMsg);    
+			clientMsg += "Saluti dal web server Java\r\n";
+			outStream.writeUTF(clientMsg);
+			outStream.flush();
+			//outStream.print(clientMsg);    
 		
 			System.out.println("\n....................... Fine ricezione dati\n");
 

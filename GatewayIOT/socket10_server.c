@@ -77,7 +77,7 @@ int TestSocketServer_GetHttpCommand() {
   socklen_t cliAddrLen = sizeof(cliAddr);
   
   //Creo il socket sul server che ascolta sulla porta 80
-  listenSockId=CreaSocketServer(8080);
+  listenSockId=CreaSocketServer(8765);
   
   //LedInit(); 
   
