@@ -47,7 +47,7 @@ public class TcpServer {
 			clientMsg += "Content-Type: text/plain\r\n";
 			clientMsg += "\r\n";
 			clientMsg += "Saluti dal web server Java\r\n";
-			outStream.writeUTF(clientMsg);
+			outStream.writeChars(clientMsg);
 			outStream.flush();
 			//outStream.print(clientMsg);    
 		

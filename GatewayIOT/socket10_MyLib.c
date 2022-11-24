@@ -181,7 +181,7 @@ int RiceviHttpCommmand(int sockId) {
   char *cmdLedBlink="/LedBlink"; 
   if(!strcmp(requestPage,cmdLedOn)) {
     printf("Eseguo il comando cmdLedOn\n ");
-    strcat(answer,"Ok, acccendo la luce.\r\n");
+    strcat(answer,"Ok, acccccccccccccendo la luce.\r\n");
     //LedOn();
   } else if(!strcmp(requestPage,cmdLedOff)) {
     printf("Eseguo il comando cmdLedOff\n ");
