@@ -31,15 +31,14 @@ public class TcpServer {
 				// Create output stream to write data and input stream to read data from socket
 				DataOutputStream outStream = new DataOutputStream(clientSocket.getOutputStream());	
 				BufferedReader inStream = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-				
+	
+				// ---------------------------------------------------------
 				//Lettura dati dal client un righa alla volta   
 				while ((clientMsg=inStream.readLine()).length() != 0) {
 					System.out.println(clientMsg);	
 				}  
-
-				// ...
 				// Elaborare qui i dati ricevuti dal client 
-				// ...
+				// ---------------------------------------------------------
 
 				//Invio dei dati su stream di rete al client
 				clientMsg = "HTTP/1.1 200 OK\r\n";
@@ -49,7 +48,7 @@ public class TcpServer {
 				clientMsg += "Saluti dal web server Java";
 				outStream.write(clientMsg.getBytes());
 				outStream.flush();
-				
+
 				System.out.println("\n....................... Fine ricezione dati\n");
 				// Close resources
 				clientSocket.close();
