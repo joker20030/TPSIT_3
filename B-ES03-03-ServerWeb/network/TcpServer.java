@@ -43,7 +43,7 @@ public class TcpServer {
 				//Invio dei dati su stream di rete al client
 				clientMsg = "HTTP/1.1 200 OK\r\n";
 				//clientMsg += "Connection: close\r\n";
-				//clientMsg += "Content-Type: text/plain\r\n";
+				clientMsg += "Content-Type: text/plain\r\n";
 				clientMsg += "\r\n";
 				clientMsg += "Saluti dal web server Java";
 				outStream.write(clientMsg.getBytes());
