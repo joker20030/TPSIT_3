@@ -36,16 +36,6 @@ public class TcpServer {
 				//Lettura dati dal client un righa alla volta   
 				while ((clientMsg=inStream.readLine()).length() != 0) {
 					System.out.println(clientMsg);	
-					if(clientMsg=inStream.readLine().lenght() == on)
-					{
-						clientMsg = "Luce accesa";
-						System.out.println(clientMsg);	
-					}
-					if(clientMsg=inStream.readLine().lenght() == off)
-					{
-						clientMsg = "Luce spenta";
-						System.out.println(clientMsg);	
-					}
 				}  
 				// Elaborare qui i dati ricevuti dal client 
 				// ---------------------------------------------------------
